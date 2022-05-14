@@ -1,0 +1,14 @@
+.two{
+ 
+    animation: colorchange 22s infinite;
+  
+  }
+  
+  @keyframes colorchange {
+    0%   {background-color: #41415a;}
+    25%  {background-color:#3dc200;}
+    50%  {background-color: #f700ff;}
+    75%  {background-color: #fc0000;}
+    90% {background-color:#4c00ff;}
+    100% {background-color:#08D9D6;}
+  }
