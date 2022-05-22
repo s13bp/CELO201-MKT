@@ -50,11 +50,7 @@ const Create = () => {
     }
 
     const isFormFiled = () => {
-        if (image === '' || price === null || category === '' || name === '' || description === '') {
-            return false
-        } else {
-            return true
-        }
+        return !(image === '' || price === null || category === '' || name === '' || description === '');
     }
     const createNFT = async (e) => {
         e.preventDefault()
@@ -84,7 +80,7 @@ const Create = () => {
 
 
         // mint nft
-       const tx =  await marketplace.methods.createToken(uri,listingPrice ).send({
+        await marketplace.methods.createToken(uri,listingPrice ).send({
             from:defaultAccount
         })
 
@@ -98,9 +94,9 @@ const Create = () => {
         <div className='create two section__padding'>
             <div className="create-container">
                 <h1>Creations Wizard</h1>
-                <p>Here you get to upload your own Schwifty NFT. Fill in the detils below and click on the LFG button at the bottom of it all to upload your svhwifty work of art to the blockchain! </p>
-              
-              
+                <p>Here you get to upload your own Schwifty NFT. Fill in the details below and click on the LFG button at the bottom of it all to upload your svhwifty work of art to the blockchain! </p>
+
+
                 <form className='writeForm' autoComplete='off'>
 
                     <div className="formGroup">
@@ -127,9 +123,9 @@ const Create = () => {
                     </div>
                     <div className="formGroup">
                         <label>SOME BRIEF INFO</label>
-                        <textarea onChange={(e) => setDescription(e.target.value)} type="text" rows={4}
-                                  placeholder='Brief Info of your creation'
-                        ></textarea>
+                        <textarea onChange={(e) => setDescription(e.target.value)} rows={4}
+    placeholder='Brief Info of your creation'
+    />
                     </div>
                     <div className="formGroup">
                         <label>SET PRICE</label>
@@ -140,7 +136,7 @@ const Create = () => {
                             </select>
                         </div>
                     </div>
-                   
+
                     {loading ?
                         <div className={"tw-text-center"}>
                             <CircleLoader color={"white"}/>

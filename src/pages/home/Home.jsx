@@ -7,7 +7,7 @@ import {ethers} from "ethers";
 
 const Home = () => {
 
-    const {address, connect, performActions} = useContractKit()
+    const {address, connect} = useContractKit()
     const marketplace = useMarketContract()
 
 
@@ -15,8 +15,15 @@ const Home = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+
         if(marketplace) loadNFTs()
+
+
     }, [marketplace])
+
+    useEffect(() => {
+        connect()
+    }, [connect])
     const loadNFTs = async ()  =>{
         try {
             const data = await marketplace.methods.fetchMarketItems().call()
@@ -45,8 +52,8 @@ const Home = () => {
     }
 
   return  <div className='two'>
-    
-   
+
+
    <Nfts nfts={nfts} title="SCHWIFTY COLLECTIBLES - ON SALE" loading={loading}  />
   </div>;
 };
